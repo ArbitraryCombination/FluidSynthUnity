@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using FluidSynthUnity;
+//using FluidSynthUnity;
 
-public class SoundTest : KeyboardHandlerBehavior, IKeyboardHandler {
-
+public class SoundTest : MonoBehaviour {
+#if false
     public MidiSynthBehavior MidiPlayer;
 
     private int instrumentIndex = 0;
@@ -99,4 +99,5 @@ public class SoundTest : KeyboardHandlerBehavior, IKeyboardHandler {
 
         return false;
     }
+    #endif
 }

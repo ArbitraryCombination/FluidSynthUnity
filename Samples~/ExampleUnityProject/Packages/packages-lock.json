@@ -66,7 +66,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "906cb3fc485bf4b757e14fe9df14f1e0360946b1"
+      "hash": "5cf2c464f3c89e490bda1d41ea9ea2d8f407413c"
     },
     "com.unity.modules.assetbundle": {
       "version": "1.0.0",

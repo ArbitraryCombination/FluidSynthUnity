@@ -1,23 +1,21 @@
 # FluidSynth Unity
 
 [FluidSynth](https://www.fluidsynth.org/) ported to C# through
-[Midi Player Tool Kit (Unity Asset)](https://assetstore.unity.com/packages/tools/audio/maestro-midi-player-tool-kit-free-107994) 
-(although none of that code should remain) with Unity bindings.
+[Midi Player Tool Kit (Unity Asset)](https://assetstore.unity.com/packages/tools/audio/maestro-midi-player-tool-kit-free-107994) with Unity bindings.
 Comes with [NVorbis](https://github.com/NVorbis/NVorbis) OGG Vorbis decoder.
 
 All parts are heavily modified: stripped down and optimized.
 Stripping down relates to playing MIDI files, stereo sound and other features that were not needed for Omnibullet.
 The goal was to optimize performance and the binary size.
 
-- [How to use](#how-to-use)
-- [Install](#install)
-- [Configuration](#configuration)
-
-<!-- toc -->
+This allows the system to load the whole sound font under 1ms, keep the memory usage down and work with good latency.
+(Although if you want a good latency, you may need to get creative with the API:
+The toy API used in the sample example project uses Unity's `OnAudioFilterRead` which has
+terrible latency. Omnibullet uses a different approach based on dynamically generated `AudioClip`s to reach near zero latency.)
 
 ## How to use
 
-*Work In Progress*
+See the samples. This is not a plug and play package, you may still need to do some coding.
 
 ## Install
 
@@ -29,10 +27,6 @@ Open `Packages/manifest.json` with your favorite text editor. Add following line
   }
 }
 ```
-
-## Configuration
-
-*Work In Progress*
 
 ## License
 

@@ -8,7 +8,7 @@ public class SoundTest : MonoBehaviour {
 
     public SoundFontAsset SoundFontAsset;
     
-    private MidiSynthBehavior MidiPlayer;
+    public MidiSynthBehavior MidiPlayer;
 
     private int instrumentIndex = 0;
     private List<(int, int)> Instruments;

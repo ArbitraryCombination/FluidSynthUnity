@@ -1,7 +1,9 @@
 {
-    "name": "Unity.com.arbitrary-combination.FluidSynthUnity",
+    "name": "cz.omnibullet.FluidSynthUnity.Editor",
     "references": [],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

@@ -1,7 +1,7 @@
 {
-  "name": "Unity.com.arbitrary-combination.FluidSynthUnity.Editor.Tests",
+  "name": "cz.omnibullet.FluidSynthUnity.Tests",
   "references": [
-    "Unity.com.arbitrary-combination.FluidSynthUnity"
+    "cz.omnibullet.FluidSynthUnity"
   ],
   "optionalUnityReferences": [
     "TestAssemblies"

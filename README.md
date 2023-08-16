@@ -1,15 +1,9 @@
-[![npm package](https://img.shields.io/npm/v/com.arbitrary-combination.FluidSynthUnity)](https://www.npmjs.com/package/com.arbitrary-combination.FluidSynthUnity)
-[![openupm](https://img.shields.io/npm/v/com.arbitrary-combination.FluidSynthUnity?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.arbitrary-combination.FluidSynthUnity/)
-![Tests](https://github.com/arbitrary-combination/FluidSynthUnity/workflows/Tests/badge.svg)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-
 # FluidSynth Unity
 
 FluidSynth core ported to C# with Unity bindings
 
 - [How to use](#how-to-use)
 - [Install](#install)
-  - [via npm](#via-npm)
   - [via OpenUPM](#via-openupm)
   - [via Git URL](#via-git-url)
   - [Tests](#tests)
@@ -22,27 +16,6 @@ FluidSynth core ported to C# with Unity bindings
 *Work In Progress*
 
 ## Install
-
-### via npm
-
-Open `Packages/manifest.json` with your favorite text editor. Add a [scoped registry](https://docs.unity3d.com/Manual/upm-scoped.html) and following line to dependencies block:
-```json
-{
-  "scopedRegistries": [
-    {
-      "name": "npmjs",
-      "url": "https://registry.npmjs.org/",
-      "scopes": [
-        "com.arbitrary-combination"
-      ]
-    }
-  ],
-  "dependencies": {
-    "com.arbitrary-combination.FluidSynthUnity": "1.0.0"
-  }
-}
-```
-Package should now appear in package manager.
 
 ### via OpenUPM
 
@@ -83,6 +56,10 @@ Open `Packages/manifest.json` with your favorite text editor. Add following line
 
 ## License
 
-MIT License
+LGPL 2.1 License
 
-Copyright © 2023 Arbitrary Combination
+[FluidSynth](https://github.com/FluidSynth/fluidsynth)
+Copyright © 2022 FluidSynth contributors
+
+This C# port
+Copyright © 2022-2023 Arbitrary Combination

@@ -1,7 +1,6 @@
 # Samples
 
-This folder can be used to store example projects etc.
-This folder is ignored for NPM in [.npmignore file](../.npmignore).
+This folder contains a project which showcases how to use this package.
 
 # Running package tests
 
@@ -13,8 +12,8 @@ since Unity does not provide standalone package testing solution.
 ```json
 {
   "dependencies": {
-    "com.{{COMPANY}}.{{REPOSITORY_NAME}}": "https://github.com/{{COMPANY}}/{{REPOSITORY_NAME}}.git"
+    "cz.omnibullet.fluidsynth-unity": "https://github.com/ArbitraryCombination/FluidSynthUnity.git"
   },
-  "testables": [ "com.{{COMPANY}}.{{REPOSITORY_NAME}}" ]
+  "testables": [ "cz.omnibullet.fluidsynth-unity" ]
 }
 ```

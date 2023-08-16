@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Tests.Runtime
 {
-    public class FluidSynth UnityTests
+    public class FluidSynthUnityTests
     {
         [SetUp]
         public void Setup()

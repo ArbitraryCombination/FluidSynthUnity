@@ -44,8 +44,7 @@
 
 using UnityEngine;
 
-namespace MidiPlayerTK
-{
+namespace FluidSynth {
 
     public static class fluid_dsp_float
     {

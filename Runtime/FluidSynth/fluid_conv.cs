@@ -1,8 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace MidiPlayerTK
-{
+namespace FluidSynth {
 
     public static class fluid_conv {
 

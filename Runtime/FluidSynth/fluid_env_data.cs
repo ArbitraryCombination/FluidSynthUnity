@@ -1,5 +1,4 @@
-﻿namespace MidiPlayerTK
-{
+﻿namespace FluidSynth {
 
     /*
      * envelope data

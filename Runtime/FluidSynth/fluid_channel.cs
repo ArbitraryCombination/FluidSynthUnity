@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MidiPlayerTK {
+namespace FluidSynth {
 
     public class fluid_channel {
 

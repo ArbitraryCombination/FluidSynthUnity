@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MidiPlayerTK {
+namespace FluidSynth {
 
     /* for fluid_voice_add_mod */
     public enum fluid_voice_addorover_mod {

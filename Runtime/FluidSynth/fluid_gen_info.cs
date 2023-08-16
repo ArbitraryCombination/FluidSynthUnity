@@ -1,5 +1,5 @@
-﻿namespace MidiPlayerTK
-{
+﻿namespace FluidSynth {
+    
     public class fluid_gen_info
     {
         /// <summary>

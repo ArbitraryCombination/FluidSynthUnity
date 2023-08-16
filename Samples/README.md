@@ -1,6 +1,10 @@
 # Samples
 
-This folder contains a project which showcases how to use this package.
+`ExampleUnityProject` contains a project which showcases how to use this package.
+
+`DevelopmentProject` symlinks (on Windows you may need special permissions for symlinks to work)
+the package files into it, so that it can be used for development without the copying workaround
+outlined below.
 
 # Running package tests
 

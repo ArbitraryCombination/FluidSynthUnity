@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace FluidSynthUnity {
@@ -6,17 +5,17 @@ namespace FluidSynthUnity {
 	/**
 	 * Unity assets required to load a sound font.
 	 */
-	[Serializable]
-	public class SoundFontAsset {
+	[CreateAssetMenu]
+	public class SoundFontAsset : ScriptableObject {
 		public TextAsset soundFont;
 		public TextAsset[] samples;
 	}
 
-	public readonly struct ExtractedSoundFontAsset {
+	internal readonly struct SoundFontAssetInMemory {
 		public readonly (string name, byte[] bytes) soundFont;
 		public readonly (string name, byte[] bytes)[] samples;
 		
-		public ExtractedSoundFontAsset(SoundFontAsset sf) {
+		public SoundFontAssetInMemory(SoundFontAsset sf) {
 			this.soundFont = (sf.soundFont.name, sf.soundFont.bytes);
 			var sfSamples = sf.samples;
 			samples = new (string, byte[])[sfSamples.Length];

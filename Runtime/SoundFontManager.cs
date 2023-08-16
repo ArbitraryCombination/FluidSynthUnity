@@ -21,7 +21,7 @@ namespace FluidSynthUnity {
 		public static readonly Dictionary<string, HiSample> soundFontSamples = new Dictionary<string, HiSample>();
 
 		public static void LoadSoundFont(SoundFontAsset soundFontAsset) {
-			var extracted = new ExtractedSoundFontAsset(soundFontAsset);
+			var extracted = new SoundFontAssetInMemory(soundFontAsset);
 #if UNITY_WEBGL
 			initAndLoadSoundFont(extracted);
 #else
@@ -35,13 +35,13 @@ namespace FluidSynthUnity {
 #endif
 		}
 
-		private static void initAndLoadSoundFont(ExtractedSoundFontAsset soundFontAsset) {
+		private static void initAndLoadSoundFont(SoundFontAssetInMemory soundFontAssetInMemory) {
 			//NOTE(jp): Lookup table initialization calls lifted out of MidiSynth
 			fluid_conv.fluid_conversion_config();
 			fluid_dsp_float.fluid_dsp_float_config();
 			
-			byte[] sfBytes = soundFontAsset.soundFont.bytes;
-			var soundFont =  new SoundFont(sfBytes, soundFontAsset.soundFont.name);
+			byte[] sfBytes = soundFontAssetInMemory.soundFont.bytes;
+			var soundFont =  new SoundFont(sfBytes, soundFontAssetInMemory.soundFont.name);
 			SoundFontManager.soundFont = soundFont;
 			Debug.Log("SoundFont loaded");
 			
@@ -86,8 +86,8 @@ namespace FluidSynthUnity {
 				}
 			}
 #else
-			Parallel.For(0, soundFontAsset.samples.Length, new ParallelOptions(), i => {
-				var soundAsset = soundFontAsset.samples[i];
+			Parallel.For(0, soundFontAssetInMemory.samples.Length, new ParallelOptions(), i => {
+				var soundAsset = soundFontAssetInMemory.samples[i];
 				var data = DecodeSamples(soundAsset);
 				if (data != null) {
 					lock (sampleData) {

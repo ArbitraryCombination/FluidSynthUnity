@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using FluidSynth;
+using FluidSynthUnity;
 using UnityEngine;
-//using FluidSynthUnity;
 
 public class SoundTest : MonoBehaviour {
-#if false
-    public MidiSynthBehavior MidiPlayer;
+
+    public SoundFontAsset SoundFontAsset;
+    
+    private MidiSynthBehavior MidiPlayer;
 
     private int instrumentIndex = 0;
     private List<(int, int)> Instruments;
@@ -15,7 +19,9 @@ public class SoundTest : MonoBehaviour {
     private static readonly (Tone, KeyCode)[] TONES = { (Tone.C_4, KeyCode.A), (Tone.CIS_4, KeyCode.W), (Tone.D_4, KeyCode.S), (Tone.DIS_4, KeyCode.E), (Tone.E_4, KeyCode.D), (Tone.F_4, KeyCode.F), (Tone.FIS_4, KeyCode.T), (Tone.G_4, KeyCode.G), (Tone.GIS_4, KeyCode.Z), (Tone.A_4, KeyCode.H), (Tone.AIS_4, KeyCode.U), (Tone.B_4, KeyCode.J), (Tone.C_5, KeyCode.K), (Tone.CIS_5, KeyCode.O), (Tone.D_5, KeyCode.L)};
     private readonly MPTKEvent[] notes = new MPTKEvent[127];
 
-    protected override Priority keyboardHandlerPriority => Priority.SOUND_TEST;
+    private void Awake() {
+        SoundFontManager.LoadSoundFont(SoundFontAsset);
+    }
 
     private void DemoSelectedInstrument() {
         MidiSynthBehavior player = MidiPlayer;
@@ -34,10 +40,10 @@ public class SoundTest : MonoBehaviour {
         player.PlayNote(Tone.C_5, instr, 100, 100, 700);
     }
 
-    public bool OnKey(KeyboardEventData data) {
+    private void Update() {
         SoundFont soundFont = SoundFontManager.soundFont;
         if (soundFont == null || !SoundFontManager.soundFontInitialized) {
-            return false;
+            return;
         }
         MidiSynthBehavior player = MidiPlayer;
 
@@ -46,58 +52,45 @@ public class SoundTest : MonoBehaviour {
             Instruments.Sort();
         }
 
-        if (data.pressed) {
-            switch (data.key) {
-                case KeyCode.F6:
-                    transposition -= 1;
-                    Debug.Log("Transposition: " + transposition);
-                    return true;
-                case KeyCode.F7:
-                    // Previous
-                    if (--instrumentIndex < 0) {
-                        instrumentIndex = Instruments.Count - 1;
-                    }
-                    DemoSelectedInstrument();
-                    return true;
-                case KeyCode.F8:
-                    DemoSelectedInstrument();
-                    return true;
-                case KeyCode.F9:
-                    // Next
-                    if (++instrumentIndex >= Instruments.Count) {
-                        instrumentIndex = 0;
-                    }
-                    DemoSelectedInstrument();
-                    return true;
-                case KeyCode.F10:
-                    transposition += 1;
-                    Debug.Log("Transposition: " + transposition);
-                    return true;
+        if (Input.GetKeyDown(KeyCode.F6)) {
+            transposition -= 1;
+            Debug.Log("Transposition: " + transposition);
+        } else if (Input.GetKeyDown(KeyCode.F7)) {
+            // Previous
+            if (--instrumentIndex < 0) {
+                instrumentIndex = Instruments.Count - 1;
             }
-        }
-
-        if (pianoEnabled) {
+            DemoSelectedInstrument();
+        } else if (Input.GetKeyDown(KeyCode.F8)) {
+            DemoSelectedInstrument();
+        } else if (Input.GetKeyDown(KeyCode.F9)) {
+            // Next
+            if (++instrumentIndex >= Instruments.Count) {
+                instrumentIndex = 0;
+            }
+            DemoSelectedInstrument();
+        } else if (Input.GetKeyDown(KeyCode.F10)) {
+            transposition += 1;
+            Debug.Log("Transposition: " + transposition);
+        } else if (pianoEnabled) {
             foreach ((Tone rawTone, KeyCode key) in TONES) {
-                if (key != data.key) {
-                    continue;
-                }
+                bool pressed = Input.GetKeyDown(key);
+                if (!pressed && !Input.GetKeyUp(key)) continue;
 
                 var toneInt = (int) rawTone + transposition * 12;
                 if (toneInt >= 0 && toneInt < notes.Length) {
                     (int bank, int num) instr = Instruments[instrumentIndex];
 
-                    if (data.pressed) {
+                    if (pressed) {
                         notes[toneInt] = player.PlayNote((Tone) toneInt, instr, -1, 100);
                     } else {
                         player.StopEvent(notes[toneInt]);
                         notes[toneInt] = null;
                     }
                 }
-                return true;
             }
         }
-
-        return false;
+        
     }
-    #endif
+
 }

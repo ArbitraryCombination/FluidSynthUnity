@@ -1,5 +1,5 @@
 {
-    "name": "Unity.com.{{COMPANY}}.{{REPOSITORY_NAME}}.Editor",
+    "name": "Unity.com.arbitrary-combination.FluidSynthUnity.Editor",
     "references": [],
     "includePlatforms": [
         "Editor"

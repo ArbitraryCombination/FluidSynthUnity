@@ -1,7 +1,7 @@
 {
-  "name": "Unity.com.{{COMPANY}}.{{REPOSITORY_NAME}}.Editor.Tests",
+  "name": "Unity.com.arbitrary-combination.FluidSynthUnity.Tests",
   "references": [
-    "Unity.com.{{COMPANY}}.{{REPOSITORY_NAME}}"
+    "Unity.com.arbitrary-combination.FluidSynthUnity"
   ],
   "optionalUnityReferences": [
     "TestAssemblies"

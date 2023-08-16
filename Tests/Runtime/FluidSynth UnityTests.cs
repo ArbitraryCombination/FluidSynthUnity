@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
 
-namespace Tests.Editor
+namespace Tests.Runtime
 {
-    public class {{FRIENDLY_NAME}}Tests
+    public class FluidSynth UnityTests
     {
         [SetUp]
         public void Setup()

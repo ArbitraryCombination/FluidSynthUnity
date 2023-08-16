@@ -39,13 +39,13 @@ Open `Packages/manifest.json` with your favorite text editor. Add following line
 The project builds upon multiple separately licensed components:
 
 - [FluidSynth](https://github.com/FluidSynth/fluidsynth)
-  - [LGPL 2.1 License](fluidsynth.LICENSE.txt)
+  - [LGPL 2.1 License](LICENSE~/fluidsynth.txt)
   - Copyright © 2022 FluidSynth contributors
 - [NVorbis](https://github.com/NVorbis/NVorbis)
-  - [MIT License](nvorbis.LICENSE.txt)
+  - [MIT License](LICENSE~/nvorbis.txt)
   - Copyright © 2020 Andrew Ward
 - [GeneralUser GS sound font](https://www.schristiancollins.com/generaluser.php)
-  - [GeneralUser GS v1.44 License v2.0](generalusergs.LICENSE.txt)
+  - [GeneralUser GS v1.44 License v2.0](LICENSE~/generalusergs.txt)
 - [Maestro - Midi Player Tool Kit - Free](https://assetstore.unity.com/packages/tools/audio/maestro-midi-player-tool-kit-free-107994)
   - [Asset Store Terms of Service](https://unity.com/legal/as-terms) - since this adds a "substantial amount of original creative work developed or licensed outside of the Asset Store" ([FAQ](https://assetstore.unity.com/browse/eula-faq)), I guess this is ok?
 - The modifications and additions performed as part of this package
@@ -53,4 +53,30 @@ The project builds upon multiple separately licensed components:
   - Copyright © 2022-2023 Arbitrary Combination
 
 Note that while the modifications are under 0BSD,
-you still need to follow the conditions of other licenses.
+you still must follow the terms and conditions of other licenses.
+
+## Contributing
+
+1. Fork this repository (For further details, see https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)
+2. Develop changes to a new branch to your forked repository
+3. Create a Pull Request from your forked repository against this repository
+  - Pull request description should answer these questions: "What has been changed" and "What is this for"
+
+### Developing
+
+One way to develop this Unity package is to create a new Unity Project and copy this package to its Assets folder.
+
+This way .meta files (required by Unity) are generated automatically. Assets available in the package can now be tested and developed inside the project.
+
+After making changes you can test your package by eg. installing it via Git URL:
+
+Open `Packages/manifest.json` with your favorite text editor. Add following line to the dependencies block:
+```json
+    {
+        "dependencies": {
+            "com.arbitrary-combination.FluidSynthUnity": "https://github.com/ArbitraryCombination/FluidSynthUnity.git"
+        }
+    }
+```
+
+For further details, see [Unity docs about custom packages](https://docs.unity3d.com/Manual/CustomPackages.html).
